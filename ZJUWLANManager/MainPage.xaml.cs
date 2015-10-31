@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.UserDataAccounts.SystemAccess;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,11 +26,62 @@ namespace ZJUWLANManager
         public MainPage()
         {
             this.InitializeComponent();
+            TextUsername.Text = "Username";
+            TextPassword.Text = "Password";
+            _mCurrentAccount = new Account();
+#if DEBUG
+            TextUsername.Text = "3150103978";
+            TextPassword.Text = "061019";
+#endif
         }
+
+        private Account _mCurrentAccount;
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
+            new Login(_mCurrentAccount).DoLogin();
+        }
 
+        private void ButtonLogout_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var account = new Account(TextUsername.Text,TextPassword.Text);
+        }
+
+        private void ButtonRemove_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TextUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LoadTextCredential();
+        }
+
+        private void TextPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LoadTextCredential();
+        }
+
+        /// <summary>
+        /// 列表实现后应该移除这种方法
+        /// </summary>
+        private void LoadTextCredential()
+        {
+            try
+            {
+                _mCurrentAccount.Username = TextUsername.Text;
+                _mCurrentAccount.Password = TextPassword.Text;
+
+            }
+            catch (NullReferenceException)
+            {
+
+            }
         }
     }
 }

@@ -47,11 +47,13 @@ local_auth:1
 Name
 
 ###QSCBox Response Headers
+
 General
 Remote Address:192.168.73.46:80
 Request URL:http://box.zjuqsc.com/item/get/sb2
 Request Method:GET
 Status Code:200 OK
+
 Response Headers
 view source
 Accept-Ranges:bytes
@@ -69,6 +71,7 @@ Server:nginx/1.9.6
 Strict-Transport-Security:max-age=36000000;
 X-Clacks-Overhead:GNU Terry Pratchett
 X-Powered-By:PHP/5.6.13-0+deb8u1
+
 Request Headers
 view source
 Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8

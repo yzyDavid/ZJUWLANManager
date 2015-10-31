@@ -10,14 +10,14 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid HorizontalAlignment="Left" Height="620" Margin="10,10,0,0" VerticalAlignment="Top" Width="340" Grid.Row="4" Grid.Column="2">
             <ListView x:Name="ListSavedCredentials" HorizontalAlignment="Left" Height="315" Margin="172,55,0,0" VerticalAlignment="Top" Width="158"/>
-            <TextBox x:Name="TextName" HorizontalAlignment="Left" Margin="198,375,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="20" Width="132"/>
-            <TextBox x:Name="TextPassword" HorizontalAlignment="Left" Margin="198,412,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="20" Width="132" RenderTransformOrigin="0.28,-1.094"/>
-            <Button x:Name="ButtonAdd" Content="Add" HorizontalAlignment="Left" Margin="198,495,0,0" VerticalAlignment="Top" Width="132" Height="40"/>
-            <Button x:Name="ButtonRemove" Content="Remove" HorizontalAlignment="Left" Margin="198,540,0,0" VerticalAlignment="Top" Width="132" Height="40"/>
+            <TextBox x:Name="TextUsername" HorizontalAlignment="Left" Margin="198,375,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="20" Width="132" TextChanged="TextUsername_TextChanged"/>
+            <TextBox x:Name="TextPassword" HorizontalAlignment="Left" Margin="198,412,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="20" Width="132" RenderTransformOrigin="0.28,-1.094" TextChanged="TextPassword_TextChanged"/>
+            <Button x:Name="ButtonAdd" Content="Add" HorizontalAlignment="Left" Margin="198,495,0,0" VerticalAlignment="Top" Width="132" Height="40" Click="ButtonAdd_Click"/>
+            <Button x:Name="ButtonRemove" Content="Remove" HorizontalAlignment="Left" Margin="198,540,0,0" VerticalAlignment="Top" Width="132" Height="40" Click="ButtonRemove_Click"/>
             <TextBlock x:Name="TextListBelow" HorizontalAlignment="Left" Margin="172,0,0,0" TextWrapping="Wrap" Text="Saved Credentials are below:" VerticalAlignment="Top" Height="50" Width="158"/>
             <TextBlock x:Name="TextStatus" HorizontalAlignment="Left" Margin="10,55,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top" Height="315" Width="157"/>
-            <Button x:Name="ButtonLogin" Content="Login" HorizontalAlignment="Left" Margin="10,375,0,0" VerticalAlignment="Top" Width="132" Height="40"/>
-            <Button x:Name="ButtonLogout" Content="Logout" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="132" Height="40"/>
+            <Button x:Name="ButtonLogin" Content="Login" HorizontalAlignment="Left" Margin="10,375,0,0" VerticalAlignment="Top" Width="132" Height="40" Click="ButtonLogin_Click"/>
+            <Button x:Name="ButtonLogout" Content="Logout" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="132" Height="40" Click="ButtonLogout_Click"/>
         </Grid>
 
     </Grid>

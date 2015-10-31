@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+/// <summary>
+/// 第一个版本先暂时不考虑维护多个凭据的事情，先做出最小功能
+/// </summary>
 namespace ZJUWLANManager
 {
     /// <summary>

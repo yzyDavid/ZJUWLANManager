@@ -16,5 +16,11 @@ namespace ZJUWLANManager
             Username = username;
             Password = password;
         }
+
+        public Account()
+        {
+            Username = null;
+            Password = null;
+        }
     }
 }
