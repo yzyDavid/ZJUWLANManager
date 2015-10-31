@@ -1,0 +1,178 @@
+###Below is a Request Header whose Password is incorrect
+
+General
+Request URL:https://net.zju.edu.cn/cgi-bin/srun_portal
+Request Method:POST
+Status Code:200 OK
+
+Response Headers
+view source
+Cache-Control:no-cache, no-store, must-revalidate
+Connection:Keep-Alive
+Content-Type:text/html; charset=utf-8
+Date:Sat, 31 Oct 2015 19:32:41 GMT
+Keep-Alive:timeout=5, max=100
+Server:Apache/2.2.22 (Unix) mod_ssl/2.2.22 OpenSSL/1.0.0-fips DAV/2 PHP/5.2.17
+Transfer-Encoding:chunked
+
+Request Headers
+view source
+Accept:*/*
+Accept-Encoding:gzip, deflate
+Accept-Language:zh-CN,zh;q=0.8
+Cache-Control:no-cache
+Connection:keep-alive
+Content-Length:148
+Content-Type:application/x-www-form-urlencoded
+Cookie:Hm_lvt_197a6e66df85f3c2f2bfb813a70dab0c=1444981301,1446020168; PHPSESSID=e3cb0bf49254f6b4f21b66844073cd69
+Host:net.zju.edu.cn
+Origin:https://net.zju.edu.cn
+Pragma:no-cache
+Referer:https://net.zju.edu.cn/srun_port1.php?url=http://baidu.com/
+User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+
+Form Data
+view source
+view URL encoded
+action:login
+username:18158519680@ZJUA.XY
+password:293292
+ac_id:3
+type:1
+wbaredirect:http://baidu.com/
+mac:undefined
+user_ip:
+is_ldap:1
+local_auth:1
+Name
+
+###QSCBox Response Headers
+General
+Remote Address:192.168.73.46:80
+Request URL:http://box.zjuqsc.com/item/get/sb2
+Request Method:GET
+Status Code:200 OK
+Response Headers
+view source
+Accept-Ranges:bytes
+Cache-Control:max-age=3600, must-revalidate
+Connection:keep-alive
+Content-Disposition:attachment; filename="Cocoa%20Programming%20L62%20-%20Storyboards.zip.002"; filename*=utf-8''Cocoa%20Programming%20L62%20-%20Storyboards.zip.002
+Content-Length:52675331
+Content-Type:application/octet-stream
+Date:Sat, 31 Oct 2015 19:45:39 GMT
+ETag:"323c303-5224c6db06914"
+Expires:Mon, 16 Nov 2015 12:55:40 GMT
+Last-Modified:Sat, 17 Oct 2015 12:55:36 GMT
+Pragma:public
+Server:nginx/1.9.6
+Strict-Transport-Security:max-age=36000000;
+X-Clacks-Overhead:GNU Terry Pratchett
+X-Powered-By:PHP/5.6.13-0+deb8u1
+Request Headers
+view source
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding:gzip, deflate, sdch
+Accept-Language:zh-CN,zh;q=0.8
+Cache-Control:no-cache
+Connection:keep-alive
+Cookie:PHPSESSID=p5ck6kpep0i18nmp2mirqhdso3; _pk_id.6.3858=51b19a4b2d9a7984.1446320689.1.1446320689.1446320689.; _pk_ses.6.3858=*
+Host:box.zjuqsc.com
+Pragma:no-cache
+Referer:http://box.zjuqsc.com/
+Upgrade-Insecure-Requests:1
+User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+
+###您已在线，请注销后再登录。
+
+General
+Request URL:https://net.zju.edu.cn/cgi-bin/srun_portal
+Request Method:POST
+Status Code:200 OK
+
+Response Headers
+view source
+Cache-Control:no-cache, no-store, must-revalidate
+Connection:Keep-Alive
+Content-Type:text/html; charset=utf-8
+Date:Sat, 31 Oct 2015 20:12:27 GMT
+Keep-Alive:timeout=5, max=100
+Server:Apache/2.2.22 (Unix) mod_ssl/2.2.22 OpenSSL/1.0.0-fips DAV/2 PHP/5.2.17
+Transfer-Encoding:chunked
+
+Request Headers
+view source
+Accept:*/*
+Accept-Encoding:gzip, deflate
+Accept-Language:zh-CN,zh;q=0.8
+Cache-Control:no-cache
+Connection:keep-alive
+Content-Length:139
+Content-Type:application/x-www-form-urlencoded
+Cookie:PHPSESSID=6b11c3c0544c7f34282cb6d42cc24ea0
+Host:net.zju.edu.cn
+Origin:https://net.zju.edu.cn
+Pragma:no-cache
+Referer:https://net.zju.edu.cn/srun_port1.php?url=http://baidu.com/
+User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+
+Form Data
+view source
+view URL encoded
+action:login
+username:3150103978
+password:061019
+ac_id:3
+type:1
+wbaredirect:http://baidu.com/
+mac:undefined
+user_ip:
+is_ldap:1
+local_auth:1
+
+###您的ip异常，请断开wifi后重新连接
+
+General
+Request URL:https://net.zju.edu.cn/cgi-bin/srun_portal
+Request Method:POST
+Status Code:200 OK
+
+Response Headers
+view source
+Cache-Control:no-cache, no-store, must-revalidate
+Connection:Keep-Alive
+Content-Type:text/html; charset=utf-8
+Date:Sat, 31 Oct 2015 20:12:36 GMT
+Keep-Alive:timeout=5, max=100
+Server:Apache/2.2.22 (Unix) mod_ssl/2.2.22 OpenSSL/1.0.0-fips DAV/2 PHP/5.2.17
+Transfer-Encoding:chunked
+
+Request Headers
+view source
+Accept:*/*
+Accept-Encoding:gzip, deflate
+Accept-Language:zh-CN,zh;q=0.8
+Cache-Control:no-cache
+Connection:keep-alive
+Content-Length:139
+Content-Type:application/x-www-form-urlencoded
+Cookie:PHPSESSID=6b11c3c0544c7f34282cb6d42cc24ea0
+Host:net.zju.edu.cn
+Origin:https://net.zju.edu.cn
+Pragma:no-cache
+Referer:https://net.zju.edu.cn/srun_port1.php?url=http://baidu.com/
+User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+
+Form Data
+view source
+view URL encoded
+action:login
+username:3150103978
+password:061019
+ac_id:3
+type:1
+wbaredirect:http://baidu.com/
+mac:undefined
+user_ip:
+is_ldap:1
+local_auth:1
