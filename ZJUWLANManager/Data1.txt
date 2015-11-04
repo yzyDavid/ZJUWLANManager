@@ -1,3 +1,7 @@
+###Below is all Response from the Server
+用户名或密码错误。
+您已在线，请注销后再登录。
+
 ###Below is a Request Header whose Password is incorrect
 
 General

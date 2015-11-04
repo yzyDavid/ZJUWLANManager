@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.UserDataAccounts.SystemAccess;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -30,16 +32,17 @@ namespace ZJUWLANManager
             TextPassword.Text = "Password";
             _mCurrentAccount = new Account();
 #if DEBUG
-            TextUsername.Text = "3150103978";
-            TextPassword.Text = "061019";
+            TextUsername.Text = @"18158519680@zjua.xy";
+            TextPassword.Text = @"123456";
 #endif
+            LoadTextCredential();
         }
 
         private Account _mCurrentAccount;
 
-        private void ButtonLogin_Click(object sender, RoutedEventArgs e)
+        private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            new Login(_mCurrentAccount).DoLogin();
+            await new Login(_mCurrentAccount).DoLogin();
         }
 
         private void ButtonLogout_Click(object sender, RoutedEventArgs e)
@@ -80,6 +83,7 @@ namespace ZJUWLANManager
             }
             catch (NullReferenceException)
             {
+                Debug.WriteLine("NullReferenceException thrown in method LoadTextCredential!");
 
             }
         }

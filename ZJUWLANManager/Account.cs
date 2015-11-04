@@ -22,5 +22,11 @@ namespace ZJUWLANManager
             Username = null;
             Password = null;
         }
+
+        public Account(Account account)
+        {
+            Username = account.Username;
+            Password = account.Password;
+        }
     }
 }

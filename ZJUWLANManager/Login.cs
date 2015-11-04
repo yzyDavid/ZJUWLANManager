@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace ZJUWLANManager
 
         public Login(Account mAccount)
         {
-            _mAccount = mAccount;
+            _mAccount = new Account(mAccount);
         }
 
         public Login(string username, string password)
@@ -39,9 +40,7 @@ namespace ZJUWLANManager
             {
                 new KeyValuePair<string, string>("action","login"),
                 new KeyValuePair<string, string>("username",_mAccount.Username),
-//                new KeyValuePair<string, string>("username","3150103978"),
                 new KeyValuePair<string, string>("password",_mAccount.Password),
-//                new KeyValuePair<string, string>("password","061019"),
                 new KeyValuePair<string, string>("ac_id","3"),
                 new KeyValuePair<string, string>("type","1"),
                 new KeyValuePair<string, string>("wbaredirect",@"http://www.qsc.zju.edu.cn/"),
@@ -51,6 +50,13 @@ namespace ZJUWLANManager
                 new KeyValuePair<string, string>("local_auth","1"),
             });
             var response = await httpClient.PostAsync(new Uri(requestUrl), formcontent);
+            if (response.Content != null)
+            {
+                string textMessage = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine(textMessage);
+            }
+
+            httpClient.Dispose();
 
             return -1;
         }
