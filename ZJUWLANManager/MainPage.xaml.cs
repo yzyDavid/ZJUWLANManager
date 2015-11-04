@@ -37,9 +37,9 @@ namespace ZJUWLANManager
 
         private Account _mCurrentAccount;
 
-        private void ButtonLogin_Click(object sender, RoutedEventArgs e)
+        private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            new Login(_mCurrentAccount).DoLogin();
+            await new Login(_mCurrentAccount).DoLogin();
         }
 
         private void ButtonLogout_Click(object sender, RoutedEventArgs e)
