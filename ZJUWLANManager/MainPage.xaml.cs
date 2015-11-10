@@ -29,11 +29,11 @@ namespace ZJUWLANManager
         {
             this.InitializeComponent();
             TextUsername.Text = "Username";
-            TextPassword.Text = "Password";
+            TextPassword.Password = "Password";
             _mCurrentAccount = new Account();
 #if DEBUG
             TextUsername.Text = @"18158519680@zjua.xy";
-            TextPassword.Text = @"123456";
+            TextPassword.Password = "";
 #endif
             LoadTextCredential();
         }
@@ -52,7 +52,7 @@ namespace ZJUWLANManager
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var account = new Account(TextUsername.Text,TextPassword.Text);
+            var account = new Account(TextUsername.Text,TextPassword.Password);
         }
 
         private void ButtonRemove_Click(object sender, RoutedEventArgs e)
@@ -65,7 +65,7 @@ namespace ZJUWLANManager
             LoadTextCredential();
         }
 
-        private void TextPassword_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextPassword_TextChanged(object sender, RoutedEventArgs routedEventArgs)
         {
             LoadTextCredential();
         }
@@ -78,7 +78,7 @@ namespace ZJUWLANManager
             try
             {
                 _mCurrentAccount.Username = TextUsername.Text;
-                _mCurrentAccount.Password = TextPassword.Text;
+                _mCurrentAccount.Password = TextPassword.Password;
 
             }
             catch (NullReferenceException)

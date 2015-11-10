@@ -8,46 +8,57 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
         <ListView x:Name="ListSavedCredentials" 
+                      Grid.Row="0"
                       HorizontalAlignment="Center" 
-                      Height="260" 
-                      VerticalAlignment="Top" 
-                      Width="340" 
-                      Margin="10,45,0,0"/>
-        <StackPanel HorizontalAlignment="Center" 
-                    Height="320" Margin="10,310,10,10" 
+                      VerticalAlignment="Top"/>
+        <StackPanel Grid.Row="1" 
+                    HorizontalAlignment="Center" 
                     VerticalAlignment="Center" >
             <TextBox x:Name="TextUsername" 
                      HorizontalAlignment="Left" 
                      TextWrapping="Wrap" 
                      Text="TextBlock" 
+                     MinWidth="220"
                      VerticalAlignment="Top" 
                      Height="20" 
                      TextChanged="TextUsername_TextChanged" 
                      Margin="10,0,0,0"/>
-            <TextBox x:Name="TextPassword" 
+            <PasswordBox x:Name="TextPassword" 
             	HorizontalAlignment="Left" 
-            	TextWrapping="Wrap" 
-            	Text="TextBlock" 
+                MinWidth="220"
             	VerticalAlignment="Top" 
             	Height="20" 
-            	RenderTransformOrigin="0.28,-1.094" 
-            	TextChanged="TextPassword_TextChanged" 
+            	PasswordChanged="TextPassword_TextChanged" 
             	Margin="10,0,0,0"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" 
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
             <Button x:Name="ButtonAdd" 
             	Content="Add" 
             	HorizontalAlignment="Left" 
             	VerticalAlignment="Top" 
+            	Margin="10,0,0,0"
             	Height="40" 
-            	Click="ButtonAdd_Click" 
-            	Margin="198,0,0,0"/>
+            	Click="ButtonAdd_Click" />
             <Button x:Name="ButtonRemove" 
             	Content="Remove"
             	VerticalAlignment="Top" 
+            	Margin="10,0,0,0"
             	Height="40" 
             	Click="ButtonRemove_Click" 
-            	Margin="198,0,0,0"
             	HorizontalAlignment="Left" />
+        </StackPanel>
+        <StackPanel Grid.Row="3" 
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
             <Button x:Name="ButtonLogin" 
             	HorizontalAlignment="Left" 
             	VerticalAlignment="Top" 
@@ -63,6 +74,5 @@
             	Click="ButtonLogout_Click" 
             	Margin="10,0,0,0" />
         </StackPanel>
-
     </Grid>
 </Page>
