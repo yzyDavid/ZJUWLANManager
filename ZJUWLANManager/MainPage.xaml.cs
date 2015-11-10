@@ -28,8 +28,8 @@ namespace ZJUWLANManager
         public MainPage()
         {
             this.InitializeComponent();
-            TextUsername.Text = "Username";
-            TextPassword.Password = "Password";
+//            TextUsername.Text = "Username";
+//            TextPassword.Password = "Password";
             _mCurrentAccount = new Account();
 #if DEBUG
             TextUsername.Text = @"18158519680@zjua.xy";
@@ -39,6 +39,7 @@ namespace ZJUWLANManager
         }
 
         private Account _mCurrentAccount;
+        private AccountList _mAccountList;
 
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -70,22 +71,26 @@ namespace ZJUWLANManager
             LoadTextCredential();
         }
 
+        private void UpdateListView()
+        {
+            foreach (Account account in _mAccountList)
+            {
+                var view=new AccountView();
+            }
+        }
+
         /// <summary>
         /// 列表实现后应该移除这种方法
         /// </summary>
         private void LoadTextCredential()
         {
-            try
-            {
-                _mCurrentAccount.Username = TextUsername.Text;
-                _mCurrentAccount.Password = TextPassword.Password;
-
-            }
-            catch (NullReferenceException)
-            {
-                Debug.WriteLine("NullReferenceException thrown in method LoadTextCredential!");
-
-            }
+            _mCurrentAccount.Username = TextUsername.Text;
+            _mCurrentAccount.Password = TextPassword.Password;
+            // catch (NullReferenceException)
+            //            {
+            //                Debug.WriteLine("NullReferenceException thrown in method LoadTextCredential!");
+            //
+            //            }
         }
     }
 }

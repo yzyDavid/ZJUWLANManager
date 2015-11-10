@@ -7,7 +7,21 @@ using System.Threading.Tasks;
 
 namespace ZJUWLANManager
 {
-    class AccountList
+    /// <summary>
+    /// the Data list of all Credentials.
+    /// </summary>
+    class AccountList : List<Account>
     {
+        public AccountList()
+        {
+        }
+
+        public AccountList(AccountList list)
+        {
+            foreach (Account account in list)
+            {
+                this.Add(account);
+            }
+        }
     }
 }

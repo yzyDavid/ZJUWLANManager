@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ZJUWLANManager
 {
+    /// <summary>
+    /// A single Account Data.
+    /// </summary>
     class Account
     {
         public string Username { get; set; }
