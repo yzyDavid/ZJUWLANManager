@@ -9,6 +9,7 @@ namespace ZJUWLANManager
     class CredentialFile
     {
         private AccountList _mAccountList;
+        private const string DefaultFileName = @"%AppData%\ZJUWLANManager\CredentialArchieve.bin";
         public string FileName { get; }
 
         public CredentialFile(string fileName)
@@ -17,10 +18,16 @@ namespace ZJUWLANManager
             _mAccountList=new AccountList();
         }
 
+        public CredentialFile(AccountList list)
+        {
+            _mAccountList = new AccountList(list);
+            FileName = DefaultFileName;
+        }
+
         public CredentialFile(AccountList list, string fileName)
         {
             FileName = fileName;
-            _mAccountList=new AccountList(list);
+            _mAccountList = new AccountList(list);
         }
 
         public bool Save()

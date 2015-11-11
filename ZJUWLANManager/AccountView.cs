@@ -23,7 +23,10 @@ namespace ZJUWLANManager
             Initialize();
         }
 
-        private AccountView() { }
+        public AccountView()
+        {
+            _mAccount = new Account();
+        }
 
         private void Initialize()
         {
@@ -53,7 +56,7 @@ namespace ZJUWLANManager
             usernameBlock.SetValue(Grid.RowProperty, 0);
             passwordBlock.SetValue(Grid.RowProperty, 0);
             usernameBlock.SetValue(Grid.ColumnProperty, 0);
-            usernameBlock.SetValue(Grid.ColumnProperty, 1);
+            passwordBlock.SetValue(Grid.ColumnProperty, 1);
         }
     }
 }

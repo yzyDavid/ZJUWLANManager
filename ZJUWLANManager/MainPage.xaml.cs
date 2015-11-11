@@ -83,15 +83,28 @@ namespace ZJUWLANManager
             LoadTextCredential();
         }
 
+//        private void UpdateListView()
+//        {
+//            var listview = new ListView();
+//            foreach (Account account in _mAccountList)
+//            {
+//                var view=new AccountView(account);
+//                listview.Items.Add(view);
+//            }
+//            ListSavedCredentials.InitializeViewChange();
+//            ListSavedCredentials = listview;
+//        }
+
         private void UpdateListView()
         {
-            var listview = new ListView();
-            foreach (Account account in _mAccountList)
+            while(ListSavedCredentials.Items.Count>0)
             {
-                var view=new AccountView(account);
-                listview.Items.Add(view);
+                ListSavedCredentials.Items.Remove(new AccountView());
             }
-            ListSavedCredentials = listview;
+            foreach (var account in _mAccountList)
+            {
+                ListSavedCredentials.Items.Add(account);
+            }
         }
 
         /// <summary>

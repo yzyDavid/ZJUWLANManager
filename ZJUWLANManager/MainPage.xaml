@@ -17,7 +17,13 @@
         <ListView x:Name="ListSavedCredentials" 
                       Grid.Row="0"
                       HorizontalAlignment="Center" 
-                      VerticalAlignment="Top"/>
+                      VerticalAlignment="Top" ItemsSource="">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <StackPanel Grid.Row="1" 
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center" >
