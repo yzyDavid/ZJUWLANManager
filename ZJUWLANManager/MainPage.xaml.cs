@@ -28,9 +28,15 @@ namespace ZJUWLANManager
         public MainPage()
         {
             this.InitializeComponent();
-//            TextUsername.Text = "Username";
-//            TextPassword.Password = "Password";
+            //            TextUsername.Text = "Username";
+            //            TextPassword.Password = "Password";
             _mCurrentAccount = new Account();
+            _mAccountList = new AccountList();
+            TextUsername.PlaceholderText = @"Enter Username here.";
+            TextPassword.PlaceholderText = @"Enter your Password here.";
+
+            TextUsername.Text = "";
+            TextPassword.Password = "";
 #if DEBUG
             TextUsername.Text = @"18158519680@zjua.xy";
             TextPassword.Password = "";
@@ -44,6 +50,9 @@ namespace ZJUWLANManager
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             await new Login(_mCurrentAccount).DoLogin();
+//#if DEBUG
+//            ListSavedCredentials.Items.Add(_mCurrentAccount);
+//#endif
         }
 
         private void ButtonLogout_Click(object sender, RoutedEventArgs e)
@@ -54,11 +63,14 @@ namespace ZJUWLANManager
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             var account = new Account(TextUsername.Text,TextPassword.Password);
+            _mAccountList.Add(account);
+            UpdateListView();
         }
 
         private void ButtonRemove_Click(object sender, RoutedEventArgs e)
         {
 
+            UpdateListView();
         }
 
         private void TextUsername_TextChanged(object sender, TextChangedEventArgs e)
@@ -73,14 +85,18 @@ namespace ZJUWLANManager
 
         private void UpdateListView()
         {
+            var listview = new ListView();
             foreach (Account account in _mAccountList)
             {
-                var view=new AccountView();
+                var view=new AccountView(account);
+                listview.Items.Add(view);
             }
+            ListSavedCredentials = listview;
         }
 
         /// <summary>
         /// 列表实现后应该移除这种方法
+        /// 也许不必，_mCurrentAccount 可用于保存文本框中输入的凭据
         /// </summary>
         private void LoadTextCredential()
         {
