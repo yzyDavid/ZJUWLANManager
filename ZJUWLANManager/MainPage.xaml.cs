@@ -31,7 +31,7 @@ namespace ZJUWLANManager
             //            TextUsername.Text = "Username";
             //            TextPassword.Password = "Password";
             _mCurrentAccount = new Account();
-            _mAccountList = new AccountList();
+            _mAccountList = new List<Account>();
             TextUsername.PlaceholderText = @"Enter Username here.";
             TextPassword.PlaceholderText = @"Enter your Password here.";
 
@@ -45,7 +45,7 @@ namespace ZJUWLANManager
         }
 
         private Account _mCurrentAccount;
-        private AccountList _mAccountList;
+        private List<Account> _mAccountList;
 
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -83,29 +83,8 @@ namespace ZJUWLANManager
             LoadTextCredential();
         }
 
-//        private void UpdateListView()
-//        {
-//            var listview = new ListView();
-//            foreach (Account account in _mAccountList)
-//            {
-//                var view=new AccountView(account);
-//                listview.Items.Add(view);
-//            }
-//            ListSavedCredentials.InitializeViewChange();
-//            ListSavedCredentials = listview;
-//        }
-
         private void UpdateListView()
-        {
-            while(ListSavedCredentials.Items.Count>0)
-            {
-                ListSavedCredentials.Items.Remove(new AccountView());
-            }
-            foreach (var account in _mAccountList)
-            {
-                ListSavedCredentials.Items.Add(account);
-            }
-        }
+        { }
 
         /// <summary>
         /// 列表实现后应该移除这种方法
@@ -115,11 +94,6 @@ namespace ZJUWLANManager
         {
             _mCurrentAccount.Username = TextUsername.Text;
             _mCurrentAccount.Password = TextPassword.Password;
-            // catch (NullReferenceException)
-            //            {
-            //                Debug.WriteLine("NullReferenceException thrown in method LoadTextCredential!");
-            //
-            //            }
         }
     }
 }
