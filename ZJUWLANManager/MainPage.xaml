@@ -17,10 +17,27 @@
         <ListView x:Name="ListSavedCredentials" 
                       Grid.Row="0"
                       HorizontalAlignment="Center" 
-                      VerticalAlignment="Top" ItemsSource="">
+                      VerticalAlignment="Top" ItemsSource="{x:Bind MAccountList}">
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    
+                <DataTemplate x:DataType="local:Account">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="Name"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10"
+                                   Text="{x:Bind Username}"
+                                   Grid.Column="0"/>
+                        <PasswordBox x:Name="Password"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Center"
+                                     Margin="10"
+                                     Password="{x:Bind Password}"
+                                     Grid.Column="1"/>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

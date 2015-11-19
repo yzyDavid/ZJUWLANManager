@@ -9,7 +9,7 @@ namespace ZJUWLANManager
     /// <summary>
     /// A single Account Data.
     /// </summary>
-    class Account
+    public class Account
     {
         public string Username { get; set; }
         public string Password { get; set; }

@@ -31,7 +31,7 @@ namespace ZJUWLANManager
             //            TextUsername.Text = "Username";
             //            TextPassword.Password = "Password";
             _mCurrentAccount = new Account();
-            _mAccountList = new List<Account>();
+            MAccountList = new List<Account>();
             TextUsername.PlaceholderText = @"Enter Username here.";
             TextPassword.PlaceholderText = @"Enter your Password here.";
 
@@ -45,7 +45,7 @@ namespace ZJUWLANManager
         }
 
         private Account _mCurrentAccount;
-        private List<Account> _mAccountList;
+        public List<Account> MAccountList { get; }
 
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -63,7 +63,7 @@ namespace ZJUWLANManager
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             var account = new Account(TextUsername.Text,TextPassword.Password);
-            _mAccountList.Add(account);
+            MAccountList.Add(account);
             UpdateListView();
         }
 
