@@ -17,7 +17,8 @@
         <ListView x:Name="ListSavedCredentials" 
                       Grid.Row="0"
                       HorizontalAlignment="Center" 
-                      VerticalAlignment="Top" ItemsSource="{x:Bind MAccountList}">
+                      SelectionMode="None"
+                      VerticalAlignment="Top" ItemsSource="{Binding MAccountList}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:Account">
                     <Grid>
@@ -29,13 +30,13 @@
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10"
-                                   Text="{x:Bind Username}"
+                                   Text="{Binding Username}"
                                    Grid.Column="0"/>
                         <PasswordBox x:Name="Password"
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Center"
                                      Margin="10"
-                                     Password="{x:Bind Password}"
+                                     Password="{Binding Password}"
                                      Grid.Column="1"/>
                     </Grid>
                 </DataTemplate>
@@ -70,12 +71,14 @@
             	VerticalAlignment="Top" 
             	Margin="10,0,0,0"
             	Height="40" 
+                Width="140"
             	Click="ButtonAdd_Click" />
             <Button x:Name="ButtonRemove" 
             	Content="Remove"
             	VerticalAlignment="Top" 
             	Margin="10,0,0,0"
             	Height="40" 
+                Width="140"
             	Click="ButtonRemove_Click" 
             	HorizontalAlignment="Left" />
         </StackPanel>
@@ -86,6 +89,7 @@
             	HorizontalAlignment="Left" 
             	VerticalAlignment="Top" 
             	Height="40" 
+                Width="140"
             	Click="ButtonLogin_Click" 
             	Margin="10,0,0,0"
             	Content="Login"/>
@@ -94,6 +98,7 @@
             	HorizontalAlignment="Left" 
             	VerticalAlignment="Top" 
             	Height="40" 
+                Width="140"
             	Click="ButtonLogout_Click" 
             	Margin="10,0,0,0" />
         </StackPanel>

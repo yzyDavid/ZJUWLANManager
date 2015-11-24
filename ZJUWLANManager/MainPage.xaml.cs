@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -30,8 +31,8 @@ namespace ZJUWLANManager
             this.InitializeComponent();
             //            TextUsername.Text = "Username";
             //            TextPassword.Password = "Password";
-            _mCurrentAccount = new Account();
-            MAccountList = new List<Account>();
+            MCurrentAccount = new Account();
+            MAccountList = new ObservableCollection<Account>();
             TextUsername.PlaceholderText = @"Enter Username here.";
             TextPassword.PlaceholderText = @"Enter your Password here.";
 
@@ -44,12 +45,12 @@ namespace ZJUWLANManager
             LoadTextCredential();
         }
 
-        private Account _mCurrentAccount;
-        public List<Account> MAccountList { get; }
+        public Account MCurrentAccount { get; }
+        public ObservableCollection<Account> MAccountList { get; }
 
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            await new Login(_mCurrentAccount).DoLogin();
+            await new Login(MCurrentAccount).DoLogin();
 //#if DEBUG
 //            ListSavedCredentials.Items.Add(_mCurrentAccount);
 //#endif
@@ -64,13 +65,10 @@ namespace ZJUWLANManager
         {
             var account = new Account(TextUsername.Text,TextPassword.Password);
             MAccountList.Add(account);
-            UpdateListView();
         }
 
         private void ButtonRemove_Click(object sender, RoutedEventArgs e)
         {
-
-            UpdateListView();
         }
 
         private void TextUsername_TextChanged(object sender, TextChangedEventArgs e)
@@ -83,17 +81,14 @@ namespace ZJUWLANManager
             LoadTextCredential();
         }
 
-        private void UpdateListView()
-        { }
-
         /// <summary>
         /// 列表实现后应该移除这种方法
         /// 也许不必，_mCurrentAccount 可用于保存文本框中输入的凭据
         /// </summary>
         private void LoadTextCredential()
         {
-            _mCurrentAccount.Username = TextUsername.Text;
-            _mCurrentAccount.Password = TextPassword.Password;
+            MCurrentAccount.Username = TextUsername.Text;
+            MCurrentAccount.Password = TextPassword.Password;
         }
     }
 }
