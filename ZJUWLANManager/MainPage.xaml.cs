@@ -22,14 +22,13 @@ namespace ZJUWLANManager
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
+    /// check if your test-purpose not removed before push to remote.
     /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
             this.InitializeComponent();
-            //            TextUsername.Text = "Username";
-            //            TextPassword.Password = "Password";
             MCurrentAccount = new Account();
             MAccountList = new List<Account>();
             TextUsername.PlaceholderText = @"Enter Username here.";
@@ -50,31 +49,25 @@ namespace ZJUWLANManager
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             await new Login(MCurrentAccount).DoLogin();
-//#if DEBUG
-//            ListSavedCredentials.Items.Add(_mCurrentAccount);
-//#endif
         }
 
         private void ButtonLogout_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         /// <summary>
         /// TODO:按下Add按钮后应先验证是否重复
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var account = new Account(TextUsername.Text,TextPassword.Password);
+            var account = new Account(MCurrentAccount);
             MAccountList.Add(account);
             UpdateListView();
         }
 
         private void ButtonRemove_Click(object sender, RoutedEventArgs e)
         {
-
+            var selectedItem = this.ListSavedCredentials.SelectedItem;
             UpdateListView();
         }
 
@@ -90,31 +83,48 @@ namespace ZJUWLANManager
 
         private void UpdateListView()
         {
-            Debug.WriteLine("before num of items = {0}",ListSavedCredentials.Items.Count);
+            Debug.WriteLine("before num of items = {0}", ListSavedCredentials.Items.Count);
             if (ListSavedCredentials.Items != null)
             {
-                foreach (object acc in ListSavedCredentials.Items)
-                {
-                    ListSavedCredentials.Items.Remove(acc);
-                }
+                //                foreach (object acc in ListSavedCredentials.Items)
+                //                {
+                //                    ListSavedCredentials.Items.Remove(acc);
+                //                }
+                ListSavedCredentials.Items.Clear();
             }
+
             foreach (var account in MAccountList)
             {
                 var view = new AccountView(account);
                 Debug.Assert(ListSavedCredentials.Items != null, "ListSavedCredentials.Items != null");
                 ListSavedCredentials.Items.Add(view);
             }
-            Debug.WriteLine("after  num of items = {0}",ListSavedCredentials.Items.Count);
+            Debug.WriteLine("after  num of items = {0}", ListSavedCredentials.Items.Count);
+            ;   //for setting breeakpoint here.
         }
 
         /// <summary>
         /// 列表实现后应该移除这种方法
         /// 也许不必，_mCurrentAccount 可用于保存文本框中输入的凭据
         /// </summary>
-        private void LoadTextCredential()
+        private void LoadTextCredential(bool isUpdateFromUItoBackend = true)
         {
-            MCurrentAccount.Username = TextUsername.Text;
-            MCurrentAccount.Password = TextPassword.Password;
+            if (isUpdateFromUItoBackend)
+            {
+                MCurrentAccount.Username = TextUsername.Text;
+                MCurrentAccount.Password = TextPassword.Password;
+            }
+            else
+            {
+                TextUsername.Text = MCurrentAccount.Username;
+                TextPassword.Password = MCurrentAccount.Password;
+            }
+        }
+
+        public void OnAccountGridTapped(object sender, TappedRoutedEventArgs e)
+        {
+            var accView = sender as AccountView;
+            LoadTextCredential(false);
         }
     }
 }

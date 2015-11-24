@@ -31,7 +31,7 @@ namespace ZJUWLANManager
         private void Initialize()
         {
             Height = 80;
-            Width = 600;
+            Width = 400;
             Margin = new Thickness(10);
             HorizontalAlignment = HorizontalAlignment.Center;
             VerticalAlignment = VerticalAlignment.Top;
@@ -62,6 +62,8 @@ namespace ZJUWLANManager
             passwordBlock.SetValue(Grid.ColumnProperty, 1);
             Children.Add(usernameBlock);
             Children.Add(passwordBlock);
+
+            this.Tapped += this.Parent.OnAccountGridTapped;
         }
     }
 }
