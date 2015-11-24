@@ -30,8 +30,8 @@ namespace ZJUWLANManager
             this.InitializeComponent();
             //            TextUsername.Text = "Username";
             //            TextPassword.Password = "Password";
-            _mCurrentAccount = new Account();
-            _mAccountList = new AccountList();
+            MCurrentAccount = new Account();
+            MAccountList = new List<Account>();
             TextUsername.PlaceholderText = @"Enter Username here.";
             TextPassword.PlaceholderText = @"Enter your Password here.";
 
@@ -44,12 +44,12 @@ namespace ZJUWLANManager
             LoadTextCredential();
         }
 
-        private Account _mCurrentAccount;
-        private AccountList _mAccountList;
+        public Account MCurrentAccount { get; }
+        public List<Account> MAccountList { get; }
 
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            await new Login(_mCurrentAccount).DoLogin();
+            await new Login(MCurrentAccount).DoLogin();
 //#if DEBUG
 //            ListSavedCredentials.Items.Add(_mCurrentAccount);
 //#endif
@@ -63,7 +63,7 @@ namespace ZJUWLANManager
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             var account = new Account(TextUsername.Text,TextPassword.Password);
-            _mAccountList.Add(account);
+            MAccountList.Add(account);
             UpdateListView();
         }
 
@@ -83,27 +83,32 @@ namespace ZJUWLANManager
             LoadTextCredential();
         }
 
-//        private void UpdateListView()
-//        {
-//            var listview = new ListView();
-//            foreach (Account account in _mAccountList)
-//            {
-//                var view=new AccountView(account);
-//                listview.Items.Add(view);
-//            }
-//            ListSavedCredentials.InitializeViewChange();
-//            ListSavedCredentials = listview;
-//        }
+        //        private void UpdateListView()
+        //        {
+        //            var listview = new ListView();
+        //            foreach (Account account in _mAccountList)
+        //            {
+        //                var view=new AccountView(account);
+        //                listview.Items.Add(view);
+        //            }
+        //            ListSavedCredentials.InitializeViewChange();
+        //            ListSavedCredentials = listview;
+        //        }
 
         private void UpdateListView()
         {
-            while(ListSavedCredentials.Items.Count>0)
+            if (ListSavedCredentials.Items != null)
             {
-                ListSavedCredentials.Items.Remove(new AccountView());
+                foreach (object acc in ListSavedCredentials.Items)
+                {
+                    ListSavedCredentials.Items.Remove(acc);
+                }
             }
-            foreach (var account in _mAccountList)
+            foreach (var account in MAccountList)
             {
-                ListSavedCredentials.Items.Add(account);
+                var view = new AccountView(account);
+                Debug.Assert(ListSavedCredentials.Items != null, "ListSavedCredentials.Items != null");
+                ListSavedCredentials.Items.Add(view);
             }
         }
 
@@ -113,8 +118,8 @@ namespace ZJUWLANManager
         /// </summary>
         private void LoadTextCredential()
         {
-            _mCurrentAccount.Username = TextUsername.Text;
-            _mCurrentAccount.Password = TextPassword.Password;
+            MCurrentAccount.Username = TextUsername.Text;
+            MCurrentAccount.Password = TextPassword.Password;
             // catch (NullReferenceException)
             //            {
             //                Debug.WriteLine("NullReferenceException thrown in method LoadTextCredential!");

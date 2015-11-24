@@ -15,27 +15,31 @@ namespace ZJUWLANManager
     /// </summary>
     class AccountView : Grid
     {
-        private Account _mAccount;
+        public Account MAccount { get; }
 
         public AccountView(Account account)
         {
-            _mAccount = new Account(account);
+            MAccount = new Account(account);
             Initialize();
         }
 
         public AccountView()
         {
-            _mAccount = new Account();
+            MAccount = new Account();
         }
 
         private void Initialize()
         {
             Height = 80;
-            Width = 280;
+            Width = 600;
             Margin = new Thickness(10);
             HorizontalAlignment = HorizontalAlignment.Center;
             VerticalAlignment = VerticalAlignment.Top;
-            ColumnDefinitions.Add(new ColumnDefinition());
+            var cd1 = new ColumnDefinition();
+            var cd2 = new ColumnDefinition();
+            cd1.SetValue(WidthProperty,"5*");
+            cd2.SetValue(WidthProperty,"3*");
+            ColumnDefinitions.Add(new ColumnDefinition()); 
 
             var usernameBlock = new TextBlock();
             var passwordBlock = new PasswordBox();
@@ -43,9 +47,9 @@ namespace ZJUWLANManager
 
             usernameBlock.FontFamily = fontFmy;
             usernameBlock.FontSize = 14;
-            usernameBlock.Text = _mAccount.Username;
+            usernameBlock.Text = MAccount.Username;
 
-            passwordBlock.Password = _mAccount.Password;
+            passwordBlock.Password = MAccount.Password;
             passwordBlock.FontFamily = fontFmy;
             passwordBlock.FontSize = 14;
             passwordBlock.PasswordRevealMode = PasswordRevealMode.Hidden;
