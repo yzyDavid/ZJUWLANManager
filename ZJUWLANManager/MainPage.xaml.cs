@@ -60,6 +60,11 @@ namespace ZJUWLANManager
 
         }
 
+        /// <summary>
+        /// TODO:按下Add按钮后应先验证是否重复
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             var account = new Account(TextUsername.Text,TextPassword.Password);
@@ -83,20 +88,9 @@ namespace ZJUWLANManager
             LoadTextCredential();
         }
 
-        //        private void UpdateListView()
-        //        {
-        //            var listview = new ListView();
-        //            foreach (Account account in _mAccountList)
-        //            {
-        //                var view=new AccountView(account);
-        //                listview.Items.Add(view);
-        //            }
-        //            ListSavedCredentials.InitializeViewChange();
-        //            ListSavedCredentials = listview;
-        //        }
-
         private void UpdateListView()
         {
+            Debug.WriteLine("before num of items = {0}",ListSavedCredentials.Items.Count);
             if (ListSavedCredentials.Items != null)
             {
                 foreach (object acc in ListSavedCredentials.Items)
@@ -110,6 +104,7 @@ namespace ZJUWLANManager
                 Debug.Assert(ListSavedCredentials.Items != null, "ListSavedCredentials.Items != null");
                 ListSavedCredentials.Items.Add(view);
             }
+            Debug.WriteLine("after  num of items = {0}",ListSavedCredentials.Items.Count);
         }
 
         /// <summary>
@@ -120,11 +115,6 @@ namespace ZJUWLANManager
         {
             MCurrentAccount.Username = TextUsername.Text;
             MCurrentAccount.Password = TextPassword.Password;
-            // catch (NullReferenceException)
-            //            {
-            //                Debug.WriteLine("NullReferenceException thrown in method LoadTextCredential!");
-            //
-            //            }
         }
     }
 }

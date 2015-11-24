@@ -18,11 +18,6 @@
                       Grid.Row="0"
                       HorizontalAlignment="Center" 
                       VerticalAlignment="Top">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    
-                </DataTemplate>
-            </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="1" 
                     HorizontalAlignment="Center" 

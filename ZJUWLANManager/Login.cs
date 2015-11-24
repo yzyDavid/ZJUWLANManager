@@ -10,22 +10,22 @@ namespace ZJUWLANManager
 {
     class Login
     {
-        private Account _mAccount;
+        public Account MAccount { get; }
 
         public Login()
         {
-            _mAccount = new Account();
+            MAccount = new Account();
         }
 
         public Login(Account mAccount)
         {
-            _mAccount = new Account(mAccount);
+            MAccount = new Account(mAccount);
         }
 
         public Login(string username, string password)
         {
-            _mAccount.Username = username;
-            _mAccount.Password = password;
+            MAccount.Username = username;
+            MAccount.Password = password;
         }
 
         /// <summary>
@@ -39,8 +39,8 @@ namespace ZJUWLANManager
             var formcontent = new HttpFormUrlEncodedContent(new[]
             {
                 new KeyValuePair<string, string>("action","login"),
-                new KeyValuePair<string, string>("username",_mAccount.Username),
-                new KeyValuePair<string, string>("password",_mAccount.Password),
+                new KeyValuePair<string, string>("username",MAccount.Username),
+                new KeyValuePair<string, string>("password",MAccount.Password),
                 new KeyValuePair<string, string>("ac_id","3"),
                 new KeyValuePair<string, string>("type","1"),
                 new KeyValuePair<string, string>("wbaredirect",@"http://www.qsc.zju.edu.cn/"),
@@ -58,6 +58,11 @@ namespace ZJUWLANManager
 
             httpClient.Dispose();
 
+            return -1;
+        }
+
+        public async Task<int> DoLogout()
+        {
             return -1;
         }
     }

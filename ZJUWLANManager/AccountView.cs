@@ -23,7 +23,7 @@ namespace ZJUWLANManager
             Initialize();
         }
 
-        public AccountView()
+        private AccountView()
         {
             MAccount = new Account();
         }
@@ -37,9 +37,10 @@ namespace ZJUWLANManager
             VerticalAlignment = VerticalAlignment.Top;
             var cd1 = new ColumnDefinition();
             var cd2 = new ColumnDefinition();
-            cd1.SetValue(WidthProperty,"5*");
-            cd2.SetValue(WidthProperty,"3*");
-            ColumnDefinitions.Add(new ColumnDefinition()); 
+            cd1.Width=new GridLength(5,GridUnitType.Star);
+            cd2.Width=new GridLength(3,GridUnitType.Star);
+            ColumnDefinitions.Add(cd1); 
+            ColumnDefinitions.Add(cd2); 
 
             var usernameBlock = new TextBlock();
             var passwordBlock = new PasswordBox();
@@ -55,12 +56,12 @@ namespace ZJUWLANManager
             passwordBlock.PasswordRevealMode = PasswordRevealMode.Hidden;
             passwordBlock.IsEnabled = false;
 
-            Children.Add(usernameBlock);
-            Children.Add(passwordBlock);
             usernameBlock.SetValue(Grid.RowProperty, 0);
             passwordBlock.SetValue(Grid.RowProperty, 0);
             usernameBlock.SetValue(Grid.ColumnProperty, 0);
             passwordBlock.SetValue(Grid.ColumnProperty, 1);
+            Children.Add(usernameBlock);
+            Children.Add(passwordBlock);
         }
     }
 }
