@@ -40,11 +40,15 @@ namespace ZJUWLANManager
             TextUsername.Text = @"18158519680@zjua.xy";
             TextPassword.Password = "";
 #endif
+            MFile = new CredentialFile(MAccountList);
+            MFile.Load();
+
             LoadTextCredential();
         }
 
         public Account MCurrentAccount { get; }
         public List<Account> MAccountList { get; }
+        private CredentialFile MFile { get; }
 
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {

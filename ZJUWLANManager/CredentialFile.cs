@@ -1,4 +1,6 @@
 ﻿using System;
+using Windows.Data.Json;
+using System.Runtime.Serialization.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,26 +13,32 @@ namespace ZJUWLANManager
     /// </summary>
     class CredentialFile
     {
-        private List<Account> _mAccountList;
-        private const string DefaultFileName = @"%AppData%\ZJUWLANManager\CredentialArchieve.bin";
+        public List<Account> MAccountList { get; }
         public string FileName { get; }
-
-        public CredentialFile(string fileName)
-        {
-            FileName = fileName;
-            _mAccountList=new List<Account>();
-        }
+        private JsonObject JsonList { get; }
+        private const string DefaultFileName = @"%AppData%\ZJUWLANManager\CredentialArchieve.bin";
 
         public CredentialFile(List<Account> list)
         {
-            _mAccountList = new List<Account>(list);
+            MAccountList = list;
             FileName = DefaultFileName;
+            JsonList = new JsonObject();
         }
 
         public CredentialFile(List<Account> list, string fileName)
         {
             FileName = fileName;
-            _mAccountList = new List<Account>(list);
+            MAccountList = list;
+            JsonList = new JsonObject();
+        }
+
+        private void UpdateJson()
+        {
+            JsonList.Clear();
+            foreach (var acc in MAccountList)
+            {
+                JsonList.Add(new KeyValuePair<string, IJsonValue>()
+            }
         }
 
         public bool Save()

@@ -30,6 +30,7 @@ namespace ZJUWLANManager
 
         /// <summary>
         /// 约定成功登陆返回0，不成功返回错误代码，未知返回-1
+        /// 这个坑还没填，还没弄清楚返回码
         /// </summary>
         /// <returns></returns>
         public async Task<int> DoLogin()
@@ -61,9 +62,6 @@ namespace ZJUWLANManager
             return -1;
         }
 
-        public async Task<int> DoLogout()
-        {
-            return -1;
-        }
+        public async Task<int> DoLogout() => -1;
     }
 }
