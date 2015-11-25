@@ -102,6 +102,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extentions.cs" />
     <Compile Include="CredentialFile.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MainPage.xaml.cs">
