@@ -63,7 +63,7 @@ namespace ZJUWLANManager
             Children.Add(usernameBlock);
             Children.Add(passwordBlock);
 
-            this.Tapped += this.Parent.OnAccountGridTapped;
+//            this.Tapped += this.Parent.OnAccountGridTapped;
         }
     }
 }

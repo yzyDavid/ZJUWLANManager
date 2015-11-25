@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ZJUWLANManager
 {
+    /// <summary>
+    /// 每个CredentialFile实例和一个List_Account实例绑定
+    /// </summary>
     class CredentialFile
     {
         private List<Account> _mAccountList;

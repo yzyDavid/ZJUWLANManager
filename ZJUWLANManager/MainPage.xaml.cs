@@ -60,6 +60,11 @@ namespace ZJUWLANManager
         /// </summary>
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            if (MAccountList.Any(acc => acc.Username == MCurrentAccount.Username))
+            {
+                return;
+            }
+
             var account = new Account(MCurrentAccount);
             MAccountList.Add(account);
             UpdateListView();
@@ -86,10 +91,6 @@ namespace ZJUWLANManager
             Debug.WriteLine("before num of items = {0}", ListSavedCredentials.Items.Count);
             if (ListSavedCredentials.Items != null)
             {
-                //                foreach (object acc in ListSavedCredentials.Items)
-                //                {
-                //                    ListSavedCredentials.Items.Remove(acc);
-                //                }
                 ListSavedCredentials.Items.Clear();
             }
 
@@ -97,6 +98,7 @@ namespace ZJUWLANManager
             {
                 var view = new AccountView(account);
                 Debug.Assert(ListSavedCredentials.Items != null, "ListSavedCredentials.Items != null");
+                view.Tapped += OnAccountGridTapped;
                 ListSavedCredentials.Items.Add(view);
             }
             Debug.WriteLine("after  num of items = {0}", ListSavedCredentials.Items.Count);
@@ -124,6 +126,8 @@ namespace ZJUWLANManager
         public void OnAccountGridTapped(object sender, TappedRoutedEventArgs e)
         {
             var accView = sender as AccountView;
+            Debug.Assert(accView != null, "accView != null");
+            Debug.WriteLine(accView.ToString());
             LoadTextCredential(false);
         }
     }
