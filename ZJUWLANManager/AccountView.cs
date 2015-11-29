@@ -62,8 +62,6 @@ namespace ZJUWLANManager
             passwordBlock.SetValue(Grid.ColumnProperty, 1);
             Children.Add(usernameBlock);
             Children.Add(passwordBlock);
-
-//            this.Tapped += this.Parent.OnAccountGridTapped;
         }
     }
 }

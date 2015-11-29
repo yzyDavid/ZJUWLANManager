@@ -23,15 +23,26 @@ namespace ZJUWLANManager
             var ja = new JsonArray();
             foreach (var acc in list)
             {
-                var jo = new JsonObject();
-                jo.Add("Username", JsonValue.CreateStringValue(acc.Username));
-                jo.Add("Password", JsonValue.CreateStringValue(acc.Password));
-                ja.Add(jo);
+//                var jo = new JsonObject
+//                {
+//                    {"Username", JsonValue.CreateStringValue(acc.Username)},
+//                    {"Password", JsonValue.CreateStringValue(acc.Password)}
+//                };
+                var jo2 = new JsonObject();
+                jo2.Add(new KeyValuePair<string, IJsonValue>("Username", JsonValue.CreateStringValue(acc.Username)));
+                jo2.Add(new KeyValuePair<string, IJsonValue>("Password", JsonValue.CreateStringValue(acc.Password)));
+
+                ja.Add(jo2);
             }
             return ja;
         }
 
-        public static void FromJsonArray(this IList<Account> list, JsonArray ja)
+        /// <summary>
+        /// 这样子可以改变list引用指向的对象么？
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="ja"></param>
+        public static void FromJsonArray(out List<Account> list, JsonArray ja)
         {
             var nl = new List<Account>();
             foreach (var jo in ja)
@@ -48,11 +59,5 @@ namespace ZJUWLANManager
             }
             list = nl;
         }
-
-        //        public static void afds()
-        //        {
-        //            var a = new List<string> {"a", "b"};
-        //            var ja = a.ToJsonArray();
-        //        }
     }
 }

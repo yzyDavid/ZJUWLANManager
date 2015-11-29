@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.UserDataAccounts.SystemAccess;
@@ -44,15 +45,27 @@ namespace ZJUWLANManager
             MFile.Load();
 
             LoadTextCredential();
+            UpdateListView();
         }
 
-        public Account MCurrentAccount { get; }
+        public Account MCurrentAccount { get; set; }
         public List<Account> MAccountList { get; }
         private CredentialFile MFile { get; }
 
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            await new Login(MCurrentAccount).DoLogin();
+            try
+            {
+                await new Login(MCurrentAccount).DoLogin();
+            }
+            catch (COMException)
+            {
+                {
+                    Debug.WriteLine("COMException");
+                    //TODO: 发出报错
+                }
+                throw;
+            }
         }
 
         private void ButtonLogout_Click(object sender, RoutedEventArgs e)
@@ -62,21 +75,34 @@ namespace ZJUWLANManager
         /// <summary>
         /// TODO:按下Add按钮后应先验证是否重复
         /// </summary>
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        private async void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (MAccountList.Any(acc => acc.Username == MCurrentAccount.Username))
+            foreach (var acc in MAccountList)
             {
-                return;
+                if (acc.Username == MCurrentAccount.Username)
+                {
+                    acc.Password = MCurrentAccount.Password;
+                    UpdateListView();
+                    return;
+                }
             }
-
             var account = new Account(MCurrentAccount);
             MAccountList.Add(account);
             UpdateListView();
+            await MFile.Save();
         }
 
         private void ButtonRemove_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = this.ListSavedCredentials.SelectedItem;
+            var selectedItem = this.ListSavedCredentials.SelectedItem as AccountView;
+            foreach (var acc in MAccountList)
+            {
+                if (selectedItem.MAccount.Username == acc.Username)
+                {
+                    MAccountList.Remove(acc);
+                    break;
+                }
+            }
             UpdateListView();
         }
 
@@ -132,6 +158,7 @@ namespace ZJUWLANManager
             var accView = sender as AccountView;
             Debug.Assert(accView != null, "accView != null");
             Debug.WriteLine(accView.ToString());
+            MCurrentAccount = new Account(accView.MAccount);
             LoadTextCredential(false);
         }
     }
